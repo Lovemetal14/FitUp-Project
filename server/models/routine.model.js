@@ -11,7 +11,7 @@ const routineSchema = new Schema({
 
     type: {
         type: String,
-        enum: ["loseFat", "gainMuscle"]
+        enum: ["loseFat", "gainMuscle", "bootyWork", "beachWork"]
     },
     exercises: {
         type: String,
