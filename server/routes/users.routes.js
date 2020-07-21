@@ -1,8 +1,34 @@
 const express = require('express')
 const router = express.Router()
 
+const User = require('../models/user.model')
+
 // Endpoints
-router.get('/getAllusers', (req, res) => res.send('HOLA FITTER'))
+
+router.get('/getAllUsers', (req, res) => res.send('JELOU FITTER!'))
+
+router.get('/getAllUsers', (req, res, next) => {
+
+    User.find()
+        .then(response => res.send(response))
+        .catch(err => next(err))
+})
+
+
+router.get('/getOneUser/:user_id', (req, res, next) => {
+
+    User.findById(req.params.user_id)
+        .then(response => res.send(response))
+        .catch(err => next(err))
+})
+
+
+router.post('/newUser', (req, res, next) => {
+
+    User.create(req.body)
+        .then(response => res.json(response))
+        .catch(err => next(err))
+})
 
 
 module.exports = router

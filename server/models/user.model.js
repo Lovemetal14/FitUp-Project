@@ -1,22 +1,27 @@
 const mongoose = require("mongoose")
 const Schema = mongoose.Schema
 
-const clientSchema = new Schema({
+const userSchema = new Schema({
     photo: {
         type: String,
     },
     memberNumber: {
-        type: String
+        type: String,
     },
-
+    role: {
+        type: String,
+        enum: ["Client", "Trainer"]
+   
+    },
     name: {
         type: String
     },
     surname: {
         type: String
     },
-    sex: {
-        type: String
+    gender: {
+        type: String,
+        enum: ["Male", "Female"]
     },
     weight: {
         type: Number
@@ -29,12 +34,11 @@ const clientSchema = new Schema({
         default: ""
     },
 
-    
-    ownerId: { type: Schema.Types.ObjectId },
+    // ownerId: { type: Schema.Types.ObjectId },
 },{
     timestamps: true
 })
 
-const Client = mongoose.model("Client", clientSchema)
+const User = mongoose.model('User', userSchema)
 
-module.exports = Client
+module.exports = User
