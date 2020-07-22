@@ -32,8 +32,12 @@ const userSchema = new Schema({
     dateOfBirth: {
         type: String,
         default: ""
+    },   
+    country: {
+        type: String
     },
 
+  
     // ownerId: { type: Schema.Types.ObjectId },
 },{
     timestamps: true
