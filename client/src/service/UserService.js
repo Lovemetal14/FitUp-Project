@@ -9,4 +9,6 @@ export default class UserService {
     }
 
     getAllUsers = () => this.service.get('/getAllUsers')
+    getOneUser = id => this.service.get(`/getOneUser/${id}`)
+    createUser = user => this.service.post(`/newUser`, user)
 }

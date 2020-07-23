@@ -1,11 +1,11 @@
 import React from 'react'
 
-import Card from 'react-bootstrap/Card'
-import Button from 'react-bootstrap/Button'
+import { Link } from 'react-router-dom'
 
+import Card from 'react-bootstrap/Card'
 import Col from 'react-bootstrap/Col'
 
-const UserCard = ({ name, surname, photo, country }) => {
+const UserCard = ({ _id, name, surname, photo, country }) => {
     return (
         <Col md={4}>
             <Card className="user-card">
@@ -17,7 +17,7 @@ const UserCard = ({ name, surname, photo, country }) => {
                         Some quick example text to build on the card title and make up the bulk of
                         the card's content.
             </Card.Text>
-                    <Button variant="dark" size="lg" block>Info detallada</Button>
+            <Link to={`/users/${_id}`} className="btn btn-dark btn-block btn-sm">Info detallada</Link>
                 </Card.Body>
             </Card>
 
