@@ -2,26 +2,53 @@ const mongoose = require("mongoose")
 const Schema = mongoose.Schema
 
 const routineSchema = new Schema({
-    photo: {
-        type: String,
-    },
-    userNumber: {
-        type: String
-    },
 
     type: {
         type: String,
         enum: ["loseFat", "gainMuscle", "bootyWork", "beachWork"]
     },
-    exercises: {
-        type: String,
-    },
-    sex: {
-        type: String
-    },
-    weight: {
-        type: Number
-    },
+    exercises: [{
+        num: 20,
+        weight: 0,
+        sets: 3,
+        rest: 60
+    }, {
+        num: 19,
+        weight: 0,
+        sets: 3,
+        rest: 60
+    }, {
+        num: 7,
+        weight: 0,
+        sets: 3,
+        rest: 60
+    }, {
+        num: 17,
+        weight: 0,
+        sets: 3,
+        rest: 60
+    }, {
+        num: 16,
+        weight: 0,
+        sets: 3,
+        rest: 60
+    }, {
+        num: 28,
+        weight: 0,
+        sets: 3,
+        rest: 60
+    }, {
+        num: 15,
+        weight: 0,
+        sets: 3,
+        rest: 60
+    }, {
+        num: 23,
+        weight: 0,
+        sets: 3,
+        rest: 60
+    }],
+
     author: [{ type: Schema.Types.ObjectId, ref: 'Author' }],
    
 

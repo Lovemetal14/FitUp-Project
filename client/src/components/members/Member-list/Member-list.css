@@ -1,8 +1,8 @@
-.user-card{
+.member-card{
     margin-bottom: 30px;
 }
 
-.user-card img{
-    height: 200px;
+.member-card img{
+    width: 300px;
     object-fit: cover;
 }

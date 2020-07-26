@@ -5,10 +5,10 @@ import { Link } from 'react-router-dom'
 import Card from 'react-bootstrap/Card'
 import Col from 'react-bootstrap/Col'
 
-const UserCard = ({ _id, name, surname, photo, country }) => {
+const MemberCard = ({ _id, name, surname, photo, country }) => {
     return (
         <Col md={4}>
-            <Card className="user-card">
+            <Card className="member-card">
                 <Card.Img variant="top" src={photo} />
                 <Card.Body>
                     <Card.Title>{name} {surname}</Card.Title>
@@ -17,7 +17,7 @@ const UserCard = ({ _id, name, surname, photo, country }) => {
                         Some quick example text to build on the card title and make up the bulk of
                         the card's content.
             </Card.Text>
-            <Link to={`/users/${_id}`} className="btn btn-dark btn-block btn-sm">Info detallada</Link>
+            <Link to={`/members/${_id}`} className="btn btn-dark btn-block btn-sm">Info detallada</Link>
                 </Card.Body>
             </Card>
 
@@ -27,4 +27,4 @@ const UserCard = ({ _id, name, surname, photo, country }) => {
     )
 }
 
-export default UserCard
+export default MemberCard

@@ -1,31 +1,31 @@
 const express = require('express')
 const router = express.Router()
 
-const User = require('../models/user.model')
+const Member = require('../models/member.model')
 
 // Endpoints
 
-//router.get('/getAllUsers', (req, res) => res.send('JELOU FITTER!'))
+//router.get('/getAllMembers', (req, res) => res.send('JELOU FITTER!'))
 
-router.get('/getAllUsers', (req, res, next) => {
+router.get('/getAllMembers', (req, res, next) => {
 
-    User.find()
+    Member.find()
         .then(response => res.json(response))
         .catch(err => next(err))
 })
 
 
-router.get('/:user_id', (req, res, next) => {
+router.get('/:member_id', (req, res, next) => {
 
-    User.findById(req.params.user_id)
+    Member.findById(req.params.member_id)
         .then(response => res.json(response))
         .catch(err => next(err))
 })
 
 
-router.post('/newUser', (req, res, next) => {
+router.post('/newMember', (req, res, next) => {
 
-    User.create(req.body)
+    Member.create(req.body)
         .then(response => res.json(response))
         .catch(err => next(err))
 })

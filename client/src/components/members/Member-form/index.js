@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import UserService from '../../../service/UserService'
+import MemberService from '../../../service/MemberService'
 
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
-class UserForm extends Component {
+class MemberForm extends Component {
     constructor() {
         super()
         this.state = {
@@ -19,7 +19,7 @@ class UserForm extends Component {
             dateOfBirth: '',
             country: '',
         }
-        this.userService = new UserService()
+        this.memberService = new MemberService()
     }
 
     handleInputChange = e => {
@@ -40,9 +40,9 @@ class UserForm extends Component {
 
     handleFormSubmit = e => {
         e.preventDefault()
-        this.userService
-            .createUser(this.state)
-            .then(() => this.props.handleCoasterSubmit())
+        this.memberService
+            .createMember(this.state)
+            .then(() => this.props.handleMemberSubmit())
             .catch(err => console.log(err))
             
     }
@@ -69,7 +69,7 @@ class UserForm extends Component {
                     <Form.Group>
                         <Form.Label>Rol</Form.Label>
                         <Form.Control as="select" onChange={this.handleInputSelect} value={this.state.role}  > 
-                        <option>Cliente o Entrenador</option><option>Client</option><option>Trainer</option>
+                        <option>Client</option><option>Trainer</option>
                         </Form.Control>
                     </Form.Group>                        
 
@@ -122,4 +122,4 @@ class UserForm extends Component {
     }
 }
 
-export default UserForm
+export default MemberForm

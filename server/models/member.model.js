@@ -1,9 +1,15 @@
 const mongoose = require("mongoose")
 const Schema = mongoose.Schema
 
-const userSchema = new Schema({
+const memberSchema = new Schema({
     photo: {
         type: String,
+    },
+    username: {
+        type:String,
+    },
+    password: {
+        type:String
     },
     memberNumber: {
         type: String,
@@ -11,7 +17,6 @@ const userSchema = new Schema({
     role: {
         type: String,
         enum: ["Client", "Trainer"]
-   
     },
     name: {
         type: String
@@ -43,6 +48,6 @@ const userSchema = new Schema({
     timestamps: true
 })
 
-const User = mongoose.model('User', userSchema)
+const Member = mongoose.model('Member', memberSchema)
 
-module.exports = User
+module.exports = Member

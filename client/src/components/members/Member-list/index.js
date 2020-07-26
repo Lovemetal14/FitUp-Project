@@ -1,42 +1,42 @@
 import React, { Component } from 'react'
-import UserService from '../../../service/UserService'
+import MemberService from '../../../service/MemberService'
 
-import UserCard from './User-card'
-import UserForm from './../User-form'
+import MemberCard from './Member-card'
+import MemberForm from '../Member-form'
 
-import './User-list.css'
+import './Member-list.css'
 
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
 
-class UserList extends Component {
+class MemberList extends Component {
 
     constructor() {
         super()
         this.state = {
-            users: undefined,
+            members: undefined,
             showModal: false
         }
-        this.userService = new UserService()
+        this.memberService = new MemberService()
     }
 
-    componentDidMount = () => this.updateUserList()
+    componentDidMount = () => this.updateMemberList()
     
 
-    updateUserList = () => {
-        this.userService
-            .getAllUsers()
-            .then(response => this.setState({ users: response.data }))
+    updateMemberList = () => {
+        this.memberService
+            .getAllMembers()
+            .then(response => this.setState({ members: response.data }))
             .catch(err => console.log(err))
     }
 
     handleModal = status => this.setState({ showModal: status })
 
-    handleUserSubmit = () => {
+    handleMemberSubmit = () => {
         this.handleModal(false)
-        this.updateUserList()
+        this.updateMemberList()
     }
 
     
@@ -44,16 +44,16 @@ class UserList extends Component {
         return (
   
             <>
-            <Container as="main" className="users-list">
+            <Container as="main" className="members-list">
 
-                <h1>Listado de usuarios</h1>
+                <h1>Listado de miembros</h1>
                 <Button onClick={() => this.handleModal(true)} variant="dark" size="sm" style={{ marginBottom: '20px' }}>Añadir nuevo usuario</Button>
 
                 {
-                    !this.state.users ? <h3>CARGANDO...</h3> :
+                    !this.state.members ? <h3>CARGANDO...</h3> :
 
                         <Row>
-                            {this.state.users.map(elm => <UserCard key={elm._id} {...elm} />)}
+                            {this.state.members.map(elm => <MemberCard key={elm._id} {...elm} />)}
 
                         </Row>
 
@@ -63,7 +63,7 @@ class UserList extends Component {
 
             <Modal size="lg" show={this.state.showModal} onHide={() => this.handleModal(false)}>
                     <Modal.Body>
-                        <UserForm handleUserSubmit={this.handleUserSubmit} />
+                        <MemberForm handleMemberSubmit={this.handleMemberSubmit} />
                     </Modal.Body>
                 </Modal>
 
@@ -73,4 +73,4 @@ class UserList extends Component {
     }
 }
 
-export default UserList
+export default MemberList
