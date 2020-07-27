@@ -31,7 +31,7 @@ class LoginForm extends Component {
             .login(this.state)
             .then(response => {
                 this.props.setTheUser(response.data)
-                this.props.handleToast(true, 'Registro completado')
+                //this.props.handleToast(true, 'Registr
                 this.props.history.push('/members')
             })
             .catch(err => console.log(err.response.data.message))   // Error handling yay!

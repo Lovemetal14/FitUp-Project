@@ -34,9 +34,9 @@ class MemberForm extends Component {
         }
 
         //GESTIONAR MULTIPLES INPUTS CON SELECT VALUE
-    // handleInputSelect = e => {   
-    //     this.setState({gender: e.target.value })
-    // }    
+    handleInputSelectGender = e => {   
+        this.setState({gender: e.target.value })
+}    
 
     handleFormSubmit = e => {
         e.preventDefault()
@@ -73,17 +73,17 @@ class MemberForm extends Component {
                         </Form.Control>
                     </Form.Group>                        
 
-                    {/* <Form.Group>    //GESTIONAR MULTIPLES INPUTS CON SELECT VALUE
+                    <Form.Group>   
                         <Form.Label>Sex</Form.Label>
-                        <Form.Control as="select" onChange={this.handleInputSelect} value={this.state.gender}  > 
-                        <option>Hombre o Mujer</option><option>Male</option><option>Female</option>
+                        <Form.Control as="select" onChange={this.handleInputSelectGender} value={this.state.gender}  > 
+                        <option>Male</option><option>Female</option>
                         </Form.Control>
-                    </Form.Group> */}
+                    </Form.Group> 
 
-                    <Form.Group>
+                    {/* <Form.Group>
                         <Form.Label>Sex</Form.Label>
                         <Form.Control onChange={this.handleInputChange} value={this.state.gender} name="gender" type="text" />
-                    </Form.Group>                                
+                    </Form.Group>                                 */}
 
                     <Form.Group>
                         <Form.Label>Altura</Form.Label>
