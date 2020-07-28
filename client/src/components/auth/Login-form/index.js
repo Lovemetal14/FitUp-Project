@@ -32,7 +32,7 @@ class LoginForm extends Component {
             .then(response => {
                 this.props.setTheUser(response.data)
                 //this.props.handleToast(true, 'Registr
-                this.props.history.push('/members')
+                this.props.history.push('/ProfilePage')
             })
             .catch(err => console.log(err.response.data.message))   // Error handling yay!
     }

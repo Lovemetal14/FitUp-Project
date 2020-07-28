@@ -1,28 +1,29 @@
 const express = require('express')
 const router = express.Router()
 
-const Member = require('../models/member.model')
+const Routine = require('../models/routine.model')
 
 
-router.get('/getAllMembers', (req, res, next) => {
 
-    Member.find()
+router.get('/getAllRoutines', (req, res, next) => {
+
+    Routine.find()
         .then(response => res.json(response))
         .catch(err => next(err))
 })
 
 
-router.get('/getOneMember/:member_id', (req, res, next) => {
+router.get('/getOneRoutine/:routine_id', (req, res, next) => {
 
-    Member.findById(req.params.member_id)
+    Routine.findById(req.params.routine_id)
         .then(response => res.json(response))
         .catch(err => next(err))
 })
 
 
-router.post('/newMember', (req, res, next) => {
+router.post('/newRoutine', (req, res, next) => {
 
-    Member.create(req.body)
+    Routine.create(req.body)
         .then(response => res.json(response))
         .catch(err => next(err))
 })

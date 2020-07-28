@@ -13,8 +13,8 @@ import Modal from 'react-bootstrap/Modal'
 
 class MemberList extends Component {
 
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             members: undefined,
             showModal: false
@@ -41,19 +41,27 @@ class MemberList extends Component {
 
     
     render() {
+        console.log("VALOR LIST",this.state.members)
         return (
   
             <>
             <Container as="main" className="members-list">
 
                 <h1>Listado de miembros</h1>
-                <Button onClick={() => this.handleModal(true)} variant="dark" size="sm" style={{ marginBottom: '20px' }}>Añadir nuevo usuario</Button>
+
+                {
+
+                this.props.loggedInUser && <Button onClick={() => this.handleModal(true)} variant="dark" size="sm" style={{ marginBottom: '20px' }}>Añadir nuevo usuario</Button>
+
+                }
+
 
                 {
                     !this.state.members ? <h3>CARGANDO...</h3> :
 
                         <Row>
-                            {this.state.members.map(elm => <MemberCard key={elm._id} {...elm} />)}
+                            {this.state.members.map(elm =>  <MemberCard key={elm._id} {...elm} /> )}
+                                {/* // return elm.role === "Trainer" ? <MemberCard key={elm._id} {...elm} /> : null })} */}
 
                         </Row>
 

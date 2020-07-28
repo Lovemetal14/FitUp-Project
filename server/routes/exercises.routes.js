@@ -1,28 +1,29 @@
 const express = require('express')
 const router = express.Router()
 
-const Member = require('../models/member.model')
+const Exercise = require('../models/exercise.model')
 
 
-router.get('/getAllMembers', (req, res, next) => {
 
-    Member.find()
+router.get('/getAllExercises', (req, res, next) => {
+
+    Exercise.find()
         .then(response => res.json(response))
         .catch(err => next(err))
 })
 
 
-router.get('/getOneMember/:member_id', (req, res, next) => {
+router.get('/:exercise_id', (req, res, next) => {
 
-    Member.findById(req.params.member_id)
+    Exercise.findById(req.params.exercise_id)
         .then(response => res.json(response))
         .catch(err => next(err))
 })
 
 
-router.post('/newMember', (req, res, next) => {
+router.post('/newExercise', (req, res, next) => {
 
-    Member.create(req.body)
+    Exercise.create(req.body)
         .then(response => res.json(response))
         .catch(err => next(err))
 })

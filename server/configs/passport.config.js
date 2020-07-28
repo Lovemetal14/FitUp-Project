@@ -3,30 +3,23 @@ const bcrypt = require("bcrypt")
 const passport = require("passport")
 const LocalStrategy = require("passport-local").Strategy
 const flash = require("connect-flash")
-
-const User = require('../models/User.model')
-
+const Member = require('../models/member.model')
 module.exports = app => {
-
     app.use(session({
-        secret: "passport-app-webmad0620",
+        secret: process.env.DB,
         resave: true,
         saveUninitialized: true
     }))
-
     passport.serializeUser((user, next) => next(null, user._id))
     passport.deserializeUser((id, next) => {
-        User.findById(id)
+        Member.findById(id)
             .then(theUser => next(null, theUser))
             .catch(err => next(err))
     })
-
-
-
     app.use(flash())
-
     passport.use(new LocalStrategy({ passReqToCallback: true }, (req, username, password, next) => {
-        User.findOne({ username })
+        console.log("ESTE", )
+        Member.findOne({ username })
             .then(user => {
                 if (!user) {
                     return next(null, false, { message: "Nombre de usuario incorrecto" })
@@ -38,7 +31,6 @@ module.exports = app => {
             })
             .catch(err => next(err))
     }))
-
     app.use(passport.initialize())
     app.use(passport.session())
 }

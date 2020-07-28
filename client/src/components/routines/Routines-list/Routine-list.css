@@ -1,0 +1,8 @@
+.member-card{
+    margin-bottom: 30px;
+}
+
+.member-card img{
+    width: 300px;
+    object-fit: cover;
+}

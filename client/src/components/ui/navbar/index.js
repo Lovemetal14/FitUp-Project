@@ -43,13 +43,15 @@ class Navigation extends Component {
                         <Nav.Link as="span">
                             <NavLink to="/" exact activeStyle={{ color: 'white' }}>Inicio</NavLink>
                         </Nav.Link>
-                        <Nav.Link as="span">
-                            <NavLink to="/members" activeStyle={{ color: 'white' }}>Miembros</NavLink>
-                        </Nav.Link>
+
 
                         {this.props.loggedInUser ? 
                         (
                         <>
+                        <Nav.Link as="span">
+                            <NavLink to="/members" activeStyle={{ color: 'white' }}>Miembros</NavLink>
+                        </Nav.Link>
+
                             <Nav.Link as="span">
                                 <NavLink to="/routines" activeStyle={{ color: 'white' }}>Rutinas</NavLink>
                             </Nav.Link>
@@ -71,7 +73,6 @@ class Navigation extends Component {
                             </>
                             )
                      }
-
 
 
                         <Nav.Link as="span">
