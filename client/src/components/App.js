@@ -12,7 +12,7 @@ import MembersList from './members/Member-list/'
 import MemberDetail from './members/Member-detail/'
 import MemberForm from './members/Member-form/'
 import RoutinesList from './routines/Routines-list'
-import RoutineDetail from './routines/Routines-list'
+import RoutineDetail from './routines/Routine-detail'
 import RoutineForm from './routines/Routine-form'
 
 import SignupForm from './auth/Signup-form'
@@ -82,7 +82,7 @@ class App extends Component {
           <Route path="/members/:member_id" render={props => <MemberDetail {...props} />} />
 
           <Route exact path="/routines" render={() => <RoutinesList />} />
-          <Route path="/routines/:routine_id" render={props => <RoutineDetail {...props} />} />
+          <Route  path="/routines/:routine_id" render={props => <RoutineDetail {...props} />} />
 
           {/* <Route exact path="/exercises" render={() => <ExercisesList />} /> */}
 

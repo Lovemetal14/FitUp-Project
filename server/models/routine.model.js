@@ -2,22 +2,23 @@ const mongoose = require("mongoose")
 const Schema = mongoose.Schema
 
 const routineSchema = new Schema({
-    title:{
+    title: {
         type: String,
     },
     type: {
         type: String,
-        enum: ["loseFat", "gainMuscle", "bootyWork", "beachWork"]
+        enum: ["Perdida grasa", "Ganar músculo", "Especial Gluteo", "Especial Playa"]
     },
     muscleGroup: {
         type: String,
-        enum: ["Chest", "Shoulders", "Back", "Biceps", "Triceps", "Cuadriceps", "Hams", "Calves"]
+        enum: ["Pectoral", "Hombros", "Espalda", "Biceps", "Triceps", "Cuadriceps", "Femoral", "Gemelo", "Gluteo"]
     },
-    
-    author: [{ type: Schema.Types.ObjectId, ref: 'Author' }],
-   
 
-},{
+    author: [{ type: Schema.Types.ObjectId, ref: 'Author' }],
+    
+    exercises: [{ type: Schema.Types.ObjectId, ref: 'Exercise' }],
+
+}, {
     timestamps: true
 })
 
@@ -25,11 +26,3 @@ const Routine = mongoose.model("Routine", routineSchema)
 
 module.exports = Routine
 
-// exercises: [{
-//     type: Array,
-//     num: 0,
-//     weight: 0,
-//     sets: 0,
-//     rest: 0
-// },
-// ],

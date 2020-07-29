@@ -34,7 +34,7 @@ class SignupForm extends Component {
             .then(response => {
                 this.props.setTheUser(response.data)
                 //this.props.handleToast(true, 'Registro completado')
-                this.props.history.push('/ProfilePage')
+                this.props.history.push('/Profile')
             })
             .catch(err => console.log(err))  // Error handling yay!
     }

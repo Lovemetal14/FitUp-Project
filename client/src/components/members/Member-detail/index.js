@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import MemberService from '../../../service/MemberService'
+import './Member-detail.css'
 
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
@@ -31,7 +32,7 @@ class MemberDetail extends Component {
 
             !this.state.memberDetail ? <h3>CARGANDO...</h3> :
 
-                <Container as="main">
+                <Container as="main" className="members-detail">
                     <Row>
 
                         <h1>{this.state.memberDetail.name}</h1>
