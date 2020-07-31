@@ -52,6 +52,7 @@ class MemberDetail extends Component {
                             </Col>
                             <Col md={{ span: 4, offset: 1 }}>
                                 <img src={this.state.memberDetail.photo} alt={this.state.memberDetail.name} />
+                                
                                 <Link className="btn btn-dark btn-md" to='/members'>Volver</Link>
                             </Col>
                         </Card.Body>

@@ -11,8 +11,8 @@ import Col from 'react-bootstrap/Col'
 import { Link } from 'react-router-dom'
 
 class RoutineDetail extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             routineDetail: undefined
         }
@@ -27,6 +27,12 @@ class RoutineDetail extends Component {
             .getOneRoutine(id)
             .then(response => this.setState({ routineDetail: response.data }))
             .catch(err => console.log(err))
+    }
+
+    setFavRoute = () => {
+        this.routineService.setFavRoutine(this.state.routineDetail._id, this.props.loggedInUser._id)
+        .then(response => console.log(response))
+        .catch(err=> console.log(err))
     }
 
     render() {
@@ -50,11 +56,11 @@ class RoutineDetail extends Component {
                                         <div className="exer" key={elm._id}>{elm.name} - {elm.sets} Series de {elm.reps} repeticiones <br></br> <img src={elm.photo}/><br></br></div>)}
 
                                     <p><b>Detalles:</b> </p>
-                                    <a type="button" class="btn-floating btn-small btn-fb">fisbuk<i class="fab fa-facebook-f"></i></a>
+                                    
                                     <hr></hr>
 
                                     <Link className="btn btn-dark btn-md" to='/routines'>Volver</Link>
-                                    <button>Hacer favorita</button>
+                                    <button onClick={this.setFavRoute}>Hacer favorita</button>
 
 
                                 </Col>

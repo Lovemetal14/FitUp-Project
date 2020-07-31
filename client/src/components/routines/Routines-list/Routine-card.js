@@ -8,16 +8,15 @@ import Col from 'react-bootstrap/Col'
 const RoutineCard = ({ _id, title, type, muscleGroup, }) => {
     return (
         <Col md={4}>
-            <Card className="routine-card">
+            <Card className="routine-card" border="dark">
                 {/* <Card.Img variant="top" src={photo} /> */}
                 <Card.Body>
-                    <Card.Title>Entrenamiento de {muscleGroup}</Card.Title>
-                    <Card.Title>{title}</Card.Title>
-                    <Card.Title>Objetivo principal {type}</Card.Title>
+                    <Card.Title><h3>Entrenamiento de {muscleGroup}</h3> </Card.Title>
+                    <Card.Title><h3>Titulo:</h3> { title}</Card.Title>
+                    <Card.Title>- Objetivo principal: {type}</Card.Title>
 
                     <Card.Text>
-                        Some quick example text to build on the card title and make up the bulk of
-                        the card's content.
+                        Centrada en trabajar {muscleGroup} con el objetivo de {type}.
             </Card.Text>
             <Link to={`/routines/${_id}`} className="btn btn-dark btn-block btn-sm">Info detallada</Link>
                 </Card.Body>

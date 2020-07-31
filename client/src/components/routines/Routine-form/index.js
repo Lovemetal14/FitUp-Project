@@ -87,8 +87,8 @@ class RoutineForm extends Component {
                     <Form.Group>
                         <Form.Label>Grupo muscular</Form.Label>
                         <Form.Control as="select" onChange={this.handleInputSelectMuscleGroup} value={this.state.muscleGroup}  >
-                        <option>Selecciona grupo muscular</option><option>Pectoral</option><option>Hombros</option><option>Espalda</option><option>Biceps</option>
-                            <option>Triceps</option><option>Cuadriceps</option><option>Femoral</option><option>Gemelo</option><option>Gluteo</option>
+                        <option>Selecciona grupo muscular</option><option>Pectoral</option><option>Hombros</option><option>Espalda</option><option>Abdominal</option>
+                        <option>Biceps</option><option>Triceps</option><option>Cuadriceps</option><option>Femoral</option><option>Gemelo</option><option>Gluteo</option>
                             <Form.Text className="text-muted">Selecciona grupo muscular.</Form.Text>
                         </Form.Control>
                     </Form.Group>

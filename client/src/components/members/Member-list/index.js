@@ -49,7 +49,7 @@ class MemberList extends Component {
             <>
                 <Container as="main" className="members-list">
 
-                    <Card bg="light" className="air">
+                    <Card bg="light" className="air" border="dark">
 
                         <h1>Listado de Entrenadores</h1>
                     </Card>

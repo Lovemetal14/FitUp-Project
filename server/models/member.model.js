@@ -13,7 +13,9 @@ const memberSchema = new Schema({
     },
     memberNumber: {
         type: String,
-    },
+    }
+    ,
+    favourite_routines: [{type: Schema.Types.ObjectId, ref: 'Routine' }],
     role: {
         type: String,
         enum: ["Client", "Trainer"]

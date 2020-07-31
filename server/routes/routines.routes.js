@@ -3,11 +3,19 @@ const router = express.Router()
 
 const Routine = require('../models/routine.model')
 const Exercise = require('../models/exercise.model')
-const User = require('../models/User.model')
+const User = require('../models/member.model')
 
 router.get('/getAllRoutines', (req, res, next) => {
 
     Routine.find()
+        .then(response => res.json(response))
+        .catch(err => next(err))
+})
+
+router.get('/favRoutines/:user_id', (req, res, next) => {
+
+    User.findById(req.params.user_id)
+    .populate('favourite_routines')
         .then(response => res.json(response))
         .catch(err => next(err))
 })
@@ -40,8 +48,12 @@ router.post('/favouriteRoutine', (req, res, next) => {
 
     const {routineId, userId} = req.body
 
+    console.log('ESTO ES LO QUE LLEGA!', routineId, userId)
 
-    User.findByIdAndUpdate(userId, /*meter aqui en su array de favourite_routines el ID de la rutina que llega como routineId */)
+
+    User.findByIdAndUpdate(userId, {$push: {favourite_routines: routineId}}, {new: true})
+    .then(response => res.json(response))
+    .catch(err=> next(err))
 
 })
 

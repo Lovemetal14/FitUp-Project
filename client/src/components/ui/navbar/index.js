@@ -33,7 +33,7 @@ class Navigation extends Component {
         return (
             <Navbar bg="dark" variant="dark" expand="lg" sticky="top" className="navbor" >
                 <Navbar.Brand className='navbrand'>
-                    <NavLink to="/"> Fit App Clients & Trainers <img className="dumbell"src='https://image.flaticon.com/icons/png/512/69/69840.png' /> </NavLink>
+                    <NavLink to="/profile"> Fit App - Crea y encuentra tus rutinas - <img className="dumbell"src='https://image.flaticon.com/icons/png/512/69/69840.png' /> -</NavLink>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
