@@ -3,6 +3,13 @@
 }
 
 .member-card img{
-    width: 300px;
-    object-fit: cover;
+    height: 300px;
+    object-fit: scale-down;
+    padding: 5px;
+}
+
+.air{
+    margin-bottom: 30px;
+    margin-top: 30px;
+    text-align: center;
 }

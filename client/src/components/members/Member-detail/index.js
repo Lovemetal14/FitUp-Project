@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
 
 import MemberService from '../../../service/MemberService'
+import Card from 'react-bootstrap/Card'
 import './Member-detail.css'
 
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import Spinner from '../../ui/Spinner'
+
 import { Link } from 'react-router-dom'
 
 class MemberDetail extends Component {
@@ -30,26 +33,29 @@ class MemberDetail extends Component {
     render() {
         return (
 
-            !this.state.memberDetail ? <h3>CARGANDO...</h3> :
+            !this.state.memberDetail ? <Spinner /> :
 
-                <Container as="main" className="members-detail">
-                    <Row>
+                <Container as="main" className="members-detail top">
+                    <Card bg="dark" border="danger" text="white">
+                        <Card.Header>
+                            <h1>{this.state.memberDetail.name} {this.state.memberDetail.surname}</h1>
+                        </Card.Header>
+                        <Card.Body className="light">
+                            <Col md={{ span: 5, offset: 1 }}>
+                                <h3><b>País nacimiento:</b> {this.state.memberDetail.country}</h3>
+                                <p><b>Altura:</b> {this.state.memberDetail.height} cm</p>
+                                <p><b>Peso:</b> {this.state.memberDetail.weight} kg</p>
+                                <p><b>Fecha nacimiento:</b> {this.state.memberDetail.dateOfBirth} </p>
+                                <hr></hr>
+                                
 
-                        <h1>{this.state.memberDetail.name}</h1>
-
-                        <Col md={{ span: 5 , offset: 1 }}>
-                            <p><b>Detalles:</b> {this.state.memberDetail.country}</p>
-                            <p><b>Detalles:</b> {this.state.memberDetail.country}</p>
-                            <hr></hr>
-                            <Link className="btn btn-dark btn-md" to='/members'>Volver</Link>
-
-                        </Col>
-                        <Col md={{ span: 4, offset: 1 }}>
-                            <img src={this.state.memberDetail.photo} alt={this.state.memberDetail.name} />
-
-                        </Col>
-
-                    </Row>
+                            </Col>
+                            <Col md={{ span: 4, offset: 1 }}>
+                                <img src={this.state.memberDetail.photo} alt={this.state.memberDetail.name} />
+                                <Link className="btn btn-dark btn-md" to='/members'>Volver</Link>
+                            </Col>
+                        </Card.Body>
+                    </Card>
                 </Container>
 
 

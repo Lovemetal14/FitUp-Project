@@ -3,7 +3,8 @@ const Schema = mongoose.Schema
 
 const userSchema = new Schema({
     username: String,
-    password: String
+    password: String,
+    favourite_routines: [{type: Schema.Types.ObjectId, ref: 'Routine' }]
     
 }, {
     timestamps: true

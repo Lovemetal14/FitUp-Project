@@ -69,14 +69,14 @@ class MemberForm extends Component {
                     <Form.Group>
                         <Form.Label>Rol</Form.Label>
                         <Form.Control as="select" onChange={this.handleInputSelect} value={this.state.role}  > 
-                        <option>Client</option><option>Trainer</option>
+                        <option>Selecciona Entrenador o Cliente</option><option>Client</option><option>Trainer</option>
                         </Form.Control>
                     </Form.Group>                        
 
                     <Form.Group>   
                         <Form.Label>Sex</Form.Label>
                         <Form.Control as="select" onChange={this.handleInputSelectGender} value={this.state.gender}  > 
-                        <option>Male</option><option>Female</option>
+                        <option>Selecciona Hombre o Mujer</option><option>Male</option><option>Female</option>
                         </Form.Control>
                     </Form.Group> 
 

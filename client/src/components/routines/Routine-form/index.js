@@ -3,12 +3,14 @@ import RoutineService from '../../../service/RoutineService'
 
 import ExerciseService from '../../../service/exercisesService'
 
+import AuthService from '../../../service/AuthService'
+
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
 class RoutineForm extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             title: '',
             type: '',
@@ -16,17 +18,18 @@ class RoutineForm extends Component {
             exercise1: '',
             exercise2: '',
             exercise3: '',
+            author:this.props.loggedInUser._id// id del autor
 
         }
         this.routineService = new RoutineService()
         this.exerciseService = new ExerciseService()
+        this.authService = new AuthService()
     }
 
 
-
-
-
     componentDidMount = () => this.updateExerciseList()
+
+ 
 
     updateExerciseList = () => {
         this.exerciseService
@@ -48,8 +51,6 @@ class RoutineForm extends Component {
     handleInputSelectMuscleGroup = e => {
         this.setState({ muscleGroup: e.target.value })
     }
-
-
 
 
     handleFormSubmit = e => {
@@ -91,16 +92,6 @@ class RoutineForm extends Component {
                             <Form.Text className="text-muted">Selecciona grupo muscular.</Form.Text>
                         </Form.Control>
                     </Form.Group>
-
-                    {/* Array en lugar de multiples option */}
-                    {/* <Form.Group>
-                        <Form.Label>Grupo muscular</Form.Label>
-                        <Form.Control as="select" onChange={this.handleChange} value={this.state.value} multiple={true}
-                            value={["Pectoral", "Hombros", "Espalda", "Biceps", "Triceps", "Cuadriceps", "Femoral", "Gluteo", "Gemelo"]}>
-                            <Form.Text className="text-muted">Selecciona grupo muscular.</Form.Text>
-                        </Form.Control>
-                    </Form.Group> */}
-
 
                     <Form.Group controlId="exampleForm.SelectCustom">
                         <Form.Label>Selecciona Ejercicio 1</Form.Label>

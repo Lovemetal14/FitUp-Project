@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 import AuthService from '../../../service/AuthService'
 
+import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import Container from 'react-bootstrap/Container'
@@ -45,26 +46,27 @@ class SignupForm extends Component {
 
                 <Row>
                     <Col md={{ offset: 3, span: 6 }}>
-                        <h3>Registro de usuario</h3>
+                        <Card bg="light" className="logcard">
+                            <h3>Registro de usuario</h3>
 
-                        <hr></hr>
+                            <hr></hr>
 
-                        <Form onSubmit={this.handleFormSubmit}>
+                            <Form onSubmit={this.handleFormSubmit}>
 
-                            <Form.Group>
-                                <Form.Label>Nombre de usuario</Form.Label>
-                                <Form.Control onChange={this.handleInputChange} value={this.state.username} name="username" type="text" />
-                            </Form.Group>
+                                <Form.Group>
+                                    <Form.Label>Nombre de usuario</Form.Label>
+                                    <Form.Control onChange={this.handleInputChange} value={this.state.username} name="username" type="text" />
+                                </Form.Group>
 
-                            <Form.Group>
-                                <Form.Label>Contraseña</Form.Label>
-                                <Form.Control onChange={this.handleInputChange} value={this.state.password} name="password" type="password" />
-                                <Form.Text className="text-muted">Mínimo tres caracteres, mangurrián.</Form.Text>
-                            </Form.Group>
+                                <Form.Group>
+                                    <Form.Label>Contraseña</Form.Label>
+                                    <Form.Control onChange={this.handleInputChange} value={this.state.password} name="password" type="password" />
+                                    <Form.Text className="text-muted">Mínimo tres caracteres, mangurrián.</Form.Text>
+                                </Form.Group>
 
-                            <Button variant="dark" type="submit">Registrarme</Button>
-                        </Form>
-
+                                <Button variant="dark" type="submit">Registrarme</Button>
+                            </Form>
+                        </Card>
                     </Col>
                 </Row>
 

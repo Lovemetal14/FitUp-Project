@@ -9,12 +9,14 @@ import './Routine-list.css'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Button from 'react-bootstrap/Button'
+import Card from 'react-bootstrap/Card'
 import Modal from 'react-bootstrap/Modal'
+import Spinner from '../../ui/Spinner/'
 
 class RoutineList extends Component {
 
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             routines: undefined,
             showModal: false
@@ -23,7 +25,7 @@ class RoutineList extends Component {
     }
 
     componentDidMount = () => this.updateRoutineList()
-    
+
 
     updateRoutineList = () => {
         this.routineService
@@ -39,31 +41,38 @@ class RoutineList extends Component {
         this.updateRoutineList()
     }
 
-    
+
     render() {
         return (
-  
+
             <>
-            <Container as="main" className="routines-list">
+                <Container as="main" className="routines-list">
 
-                <h1>Lista de rutinas de entrenamiento</h1>
-                <Button onClick={() => this.handleModal(true)} variant="dark" size="sm" style={{ marginBottom: '20px' }}>Añadir nueva rutina</Button>
 
-                {
-                    !this.state.routines ? <h3>CARGANDO...</h3> :
+                    <Card bg="dark" text="light" border="light" className="air">
 
-                        <Row>
-                            {this.state.routines.map(elm => <RoutineCard key={elm._id} {...elm} />)}
+                        <h1>Lista de rutinas de entrenamiento</h1>
+                    </Card>
 
-                        </Row>
 
-                }
 
-            </Container>
+                    <Button onClick={() => this.handleModal(true)} variant="light" size="lg" style={{ marginBottom: '20px' }}>Añadir nueva rutina</Button>
 
-            <Modal size="lg" show={this.state.showModal} onHide={() => this.handleModal(false)}>
+                    {
+                        !this.state.routines ? <Spinner /> :
+
+                            <Row>
+                                {this.state.routines.map(elm => <RoutineCard key={elm._id} {...elm} />)}
+
+                            </Row>
+
+                    }
+
+                </Container>
+
+                <Modal size="lg" show={this.state.showModal} onHide={() => this.handleModal(false)}>
                     <Modal.Body>
-                        <RoutineForm handleRoutineSubmit={this.handleRoutineSubmit} />
+                        <RoutineForm loggedInUser={this.props.loggedInUser}  handleRoutineSubmit={this.handleRoutineSubmit} />
                     </Modal.Body>
                 </Modal>
 

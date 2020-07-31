@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 
 import AuthService from '../../../service/AuthService'
 
+import './login-form.css'
+import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import Container from 'react-bootstrap/Container'
@@ -31,7 +33,7 @@ class LoginForm extends Component {
             .login(this.state)
             .then(response => {
                 this.props.setTheUser(response.data)
-                //this.props.handleToast(true, 'Sesión Iniciada')
+                this.props.handleToast(true, 'Sesión Iniciada')
                 this.props.history.push('/profile')
             })
             .catch(err => console.log(err.response.data.message))   // Error handling yay!
@@ -42,8 +44,11 @@ class LoginForm extends Component {
             <Container as="main">
 
                 <Row>
+
                     <Col md={{ offset: 3, span: 6 }}>
-                        <h3>Inicio de sesión</h3>
+                        <Card bg="light" className= "logcard">
+
+                        <h2>Inicio de sesión</h2>
 
                         <hr></hr>
 
@@ -63,7 +68,9 @@ class LoginForm extends Component {
                             <Button variant="dark" type="submit">Inicia sesión</Button>
                         </Form>
 
+                        </Card>
                     </Col>
+                    
                 </Row>
 
 

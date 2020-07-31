@@ -14,7 +14,7 @@ const routineSchema = new Schema({
         enum: ["Pectoral", "Hombros", "Espalda", "Biceps", "Triceps", "Cuadriceps", "Femoral", "Gemelo", "Gluteo"]
     },
 
-    author: [{ type: Schema.Types.ObjectId, ref: 'Author' }],
+    author: { type: Schema.Types.ObjectId },
     
     exercises: [{ type: Schema.Types.ObjectId, ref: 'Exercise' }],
 

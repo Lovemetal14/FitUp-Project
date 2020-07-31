@@ -25,7 +25,6 @@ const RoutineCard = ({ _id, title, type, muscleGroup, }) => {
 
         </Col>
 
-
     )
 }
 

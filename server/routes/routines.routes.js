@@ -3,7 +3,7 @@ const router = express.Router()
 
 const Routine = require('../models/routine.model')
 const Exercise = require('../models/exercise.model')
-
+const User = require('../models/User.model')
 
 router.get('/getAllRoutines', (req, res, next) => {
 
@@ -27,31 +27,22 @@ router.get('/getOneRoutine/:routine_id', (req, res, next) => {
 router.post('/newRoutine', (req, res, next) => {
 
     const exercises = [req.body.exercise1, req.body.exercise2, req.body.exercise3]
-    const {title, type, muscleGroup} = req.body
+    const {title, type, muscleGroup, author} = req.body
 
 
-    Routine.create({title, type, muscleGroup, exercises})
+    Routine.create({title, type, muscleGroup, author, exercises})
         .then(response => res.json(response))
         .catch(err => next(err))
 
 })
 
-router.get('/', (req, res) => {
+router.post('/favouriteRoutine', (req, res, next) => {
 
-    Routine
-        .findOne(req.routine)
-        .then(Objroutine => {
-            Routine
-
-                .findById(Objroutine._id)
-                .populate("exercises")
-                .then(routine => {
-                    res.render('routines/routine-list', routine)
-                })
+    const {routineId, userId} = req.body
 
 
+    User.findByIdAndUpdate(userId, /*meter aqui en su array de favourite_routines el ID de la rutina que llega como routineId */)
 
-        })
 })
 
 

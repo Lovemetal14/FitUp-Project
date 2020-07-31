@@ -69,25 +69,25 @@ class App extends Component {
     return (
       <>
 
-        <Navigation setTheUser={this.setTheUser} loggedInUser={this.state.loggedInUser} handleToast={this.handleToast} {...this.props} />
+        <Navigation setTheUser={this.setTheUser} loggedInUser={this.state.loggedInUser} handleToast={this.handleToast} /> 
 
         <Switch>
 
           <Route path="/profile" render={() =>
-            this.state.loggedInUser ? <ProfilePage loggedInUser={this.state.loggedInUser} /> :
-              <Redirect to='/signup' />} />
+            this.state.loggedInUser ? <ProfilePage loggedInUser={this.state.loggedInUser} /> : <Redirect to='/signup' />} />
 
           <Route exact path="/members" render={() => <MembersList loggedInUser={this.state.loggedInUser} {...this.props} />} />
           <Route path="/members/new" render={() => <MemberForm />} />
           <Route path="/members/:member_id" render={props => <MemberDetail {...props} />} />
 
-          <Route exact path="/routines" render={() => <RoutinesList />} />
+          <Route exact path="/routines" render={() => <RoutinesList loggedInUser={this.state.loggedInUser} />} />
           <Route  path="/routines/:routine_id" render={props => <RoutineDetail {...props} />} />
 
           {/* <Route exact path="/exercises" render={() => <ExercisesList />} /> */}
-
-          <Route path="/signup" render={props => <SignupForm {...props} setTheUser={this.setTheUser} loggedInUser={this.state.loggedInUser} />} />
-          <Route path="/login" render={props => <LoginForm {...props} setTheUser={this.setTheUser} loggedInUser={this.state.loggedInUser} />} />
+          <Route path="/signup" render={props => <SignupForm {...props} setTheUser={this.setTheUser} handleToast={this.handleToast} />} />  
+          {/* <Route path="/signup" render={props => <SignupForm {...props} setTheUser={this.setTheUser} loggedInUser={this.state.loggedInUser} />} /> */}
+          {/* <Route path="/login" render={props => <LoginForm {...props} setTheUser={this.setTheUser} loggedInUser={this.state.loggedInUser} />} /> */}
+          <Route path="/login" render={props => <LoginForm {...props} setTheUser={this.setTheUser} handleToast={this.handleToast} />} />
 
 
         </Switch>

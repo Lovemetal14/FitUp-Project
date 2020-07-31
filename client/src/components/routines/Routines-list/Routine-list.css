@@ -1,8 +1,8 @@
-.member-card{
+.routine-card{
     margin-bottom: 30px;
 }
 
-.member-card img{
+.routine-card img{
     width: 300px;
     object-fit: cover;
 }

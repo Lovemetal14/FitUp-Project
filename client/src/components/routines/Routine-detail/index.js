@@ -36,33 +36,31 @@ class RoutineDetail extends Component {
 
                 <Container as="main" className="top">
                     <Card bg="dark" border="danger" text="white">
-                        <Row>
+                        <Col>
                             <Card.Header>
                                 <h1>Entrenamiento {this.state.routineDetail.title} para {this.state.routineDetail.muscleGroup}</h1>
                             </Card.Header>
-                            <Card.Body>
-                            <Col md={{ span: 5, offset: 1 }}>
-                                <p><b>Titulo: </b> {this.state.routineDetail.title}</p>
-                                <p><b>Objetivo principal:</b> {this.state.routineDetail.type}</p>
+                            <Card.Body className="light">
+                                <Col >
+
+                                    <h3><b>Titulo: </b> {this.state.routineDetail.title}</h3>
+                                    <p><b>Objetivo principal:</b> {this.state.routineDetail.type}</p>
+
+                                    <h3>Ejercicios: </h3>{this.state.routineDetail && this.state.routineDetail.exercises.map(elm =>
+                                        <div className="exer" key={elm._id}>{elm.name} - {elm.sets} Series de {elm.reps} repeticiones <br></br> <img src={elm.photo}/><br></br></div>)}
+
+                                    <p><b>Detalles:</b> </p>
+                                    <a type="button" class="btn-floating btn-small btn-fb">fisbuk<i class="fab fa-facebook-f"></i></a>
+                                    <hr></hr>
+
+                                    <Link className="btn btn-dark btn-md" to='/routines'>Volver</Link>
+                                    <button>Hacer favorita</button>
 
 
-
-                                <p>Ejercicios: {this.state.routines && this.state.routines.exercises.map(elm => <Col key={elm._id} {...elm} />)} </p>
-
-
-                                <p><b>Detalles:</b> </p>
-                                <hr></hr>
-                                <Link className="btn btn-dark btn-md" to='/routines'>Volver</Link>
-
-
-
-                            </Col>
-                            <Col md={{ span: 4, offset: 1 }}>
-                                <img src={this.state.routineDetail.photo} alt={this.state.routineDetail.name} />
-
-                            </Col>
+                                </Col>
+ 
                             </Card.Body>
-                        </Row>
+                        </Col>
                     </Card>
                 </Container>
 

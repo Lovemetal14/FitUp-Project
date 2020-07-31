@@ -8,8 +8,10 @@ import './Member-list.css'
 
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
+import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
+import Spinner from '../../ui/Spinner/'
 
 class MemberList extends Component {
 
@@ -23,7 +25,7 @@ class MemberList extends Component {
     }
 
     componentDidMount = () => this.updateMemberList()
-    
+
 
     updateMemberList = () => {
         this.memberService
@@ -39,37 +41,41 @@ class MemberList extends Component {
         this.updateMemberList()
     }
 
-    
+
     render() {
-        console.log("VALOR LIST",this.state.members)
+        console.log("VALOR LIST", this.state.members)
         return (
-  
+
             <>
-            <Container as="main" className="members-list">
+                <Container as="main" className="members-list">
 
-                <h1>Listado de miembros</h1>
+                    <Card bg="light" className="air">
 
-                {
-
-                this.props.loggedInUser && <Button onClick={() => this.handleModal(true)} variant="dark" size="sm" style={{ marginBottom: '20px' }}>Añadir nuevo usuario</Button>
-
-                }
+                        <h1>Listado de Entrenadores</h1>
+                    </Card>
 
 
-                {
-                    !this.state.members ? <h3>CARGANDO...</h3> :
+                    {
 
-                        <Row>
-                            {this.state.members.map(elm =>  <MemberCard key={elm._id} {...elm} /> )}
+                        this.props.loggedInUser && <Button onClick={() => this.handleModal(true)} variant="light" size="lg" style={{ marginBottom: '20px' }}>Añadir nuevo usuario</Button>
+
+                    }
+
+
+                    {
+                        !this.state.members ? <Spinner /> :
+
+                            <Row>
+                                {this.state.members.map(elm => <MemberCard key={elm._id} {...elm} />)}
                                 {/* // return elm.role === "Trainer" ? <MemberCard key={elm._id} {...elm} /> : null })} */}
 
-                        </Row>
+                            </Row>
 
-                }
+                    }
 
-            </Container>
+                </Container>
 
-            <Modal size="lg" show={this.state.showModal} onHide={() => this.handleModal(false)}>
+                <Modal size="lg" show={this.state.showModal} onHide={() => this.handleModal(false)}>
                     <Modal.Body>
                         <MemberForm handleMemberSubmit={this.handleMemberSubmit} />
                     </Modal.Body>
